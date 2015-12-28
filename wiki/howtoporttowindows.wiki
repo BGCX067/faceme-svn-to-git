@@ -1,0 +1,38 @@
+#summary How may I port Portrait to Windows ?
+#labels Featured,Phase-Implementation
+
+= Introduction =
+
+The windows port is not available , to do that someone need to implement Windows Webcam capture for Java and send it to me.
+
+
+= Details =
+
+Sun Java have webcam support with JMF. But it doesn't work with MacOS X, and i don't have windows OS :-/
+
+It possible to add windows support simply by adding this kind of java file.
+
+== Sample Windows support ==
+package fr.sokaris.faceme.webcam;
+
+import java.awt.image.BufferedImage;
+
+public class {os.name string without spaces}Capture implements Capture {
+	public void start() throws WebCamException {
+        }
+
+	public void stop() {
+        }
+
+	public BufferedImage showSource() throws WebCamException {
+          return null;
+        }
+	
+	public int getWidth() {
+          return 0;
+        }
+	
+	public int getHeight() {
+          return 0;
+        }
+}

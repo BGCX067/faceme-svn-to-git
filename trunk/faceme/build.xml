@@ -1,0 +1,73 @@
+<project name="FaceMe" default="dist" basedir=".">
+
+  <!-- set global properties for this build -->
+  <property name="src" location="src"/>
+  <property name="resources" location="resources"/>
+  <property name="build" location="build"/>
+  <property name="dist"  location="dist"/>
+  <property name="lib" location="lib"/>
+	
+  <property name="facebook-api" value="facebook-java-api-1.5.1.jar"/>
+  <property name="activation" value="activation.jar"/>
+  <property name="jaxb-api" value="jaxb-api-2.1.jar"/>
+  <property name="jaxb-impl" value="jaxb-impl-2.1.jar"/>
+  <property name="json" value="json-1.0.jar"/>
+  <property name="jsr173" value="jsr173-api-1.0.jar"/>
+	
+  <property name="username" value="smaucourt@gmail.com"/>
+  <property name="version" value="0.1.1"/>
+  <property name="title" value="Portrait"/>
+
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build}"/>
+  	<copy todir="${build}" overwrite="yes">
+  	  <fileset dir="${resources}"/>
+  	</copy>
+  </target>
+	
+  <target name="compile" depends="init"
+        description="compile the source " >
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac srcdir="${src}" destdir="${build}" 
+    	classpath="${lib}/${facebook-api};${lib}/${activation};${lib}/${jaxb-api};${lib}/${jaxb-impl};${lib}/${json};${lib}/${jsr173}" 
+    	optimize="yes" source="1.5" target="1.5"/>
+  </target>
+
+  <target name="dist" depends="compile"
+        description="generate the distribution" >
+    <!-- Create the distribution directory -->
+    <mkdir dir="${dist}"/>
+  	<!-- copy jar files lib to dist -->
+  	<copy todir="${dist}" overwrite="yes">
+  	  	  <fileset dir="${lib}"/>
+  	</copy>
+
+    <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+    <jar jarfile="${dist}/portrait.jar" basedir="${build}">
+      	<manifest>
+  	    	<attribute name="Main-class" value="fr.sokaris.faceme.FaceMe"/>
+  	    	<attribute name="Class-path" value="${facebook-api} ${activation} ${jaxb-api} ${jaxb-impl} ${json} ${jsr173}"/>
+  			<attribute name="Built-By" value="${username}"/>
+      		<section name="common">
+      	    	<attribute name="Created-By" value="${username}"/>
+    	    	<attribute name="Specification-Title" value="${title}"/>
+      			<attribute name="Specification-Version" value="${version}"/> 
+    	    	<attribute name="Implementation-Version" value="${version} ${TODAY}"/>       
+    	     	<attribute name="Implementation-Title" value="${title}"/>
+      		</section>
+      	</manifest>
+    </jar>
+  </target>
+
+  <target name="clean"
+        description="clean up" >
+    <!-- Delete the ${build} and ${dist} directory trees -->
+  	<delete file="MANIFEST.MF"/>
+    <delete dir="${build}"/>
+    <delete dir="${dist}"/>
+  </target>
+</project>
+

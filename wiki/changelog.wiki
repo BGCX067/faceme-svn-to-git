@@ -1,0 +1,6 @@
+#summary changelog since the first release
+#labels Featured
+
+  * Jan 17, 2008 [0.0.1.1] : FaceMe becomes Portrait
+  * Dec 13, 2007 [0.0.1.1] : correct bug when we take a photo
+  * Dec 09, 2007 [0.0.0.1] : first commit

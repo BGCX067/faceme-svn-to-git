@@ -1,0 +1,5 @@
+#summary What is Portrait
+= Introduction =
+
+Presently it's a Mac OS X application writted in Java 5 with special support of Quicktime technology.
+We need a facebook account to use it.

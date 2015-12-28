@@ -1,0 +1,45 @@
+#summary What is Portrait? how may I use it?. (FaceMe becomes Portrait)
+#labels Featured,Phase-Deploy
+
+= What is it? =
+
+Portrait is a tiny java application that take a photo with your webcam and post it to your facebook account.
+
+
+= Requirement =
+
+  * Mac OS X (windows soon)
+  * JDK 1.5 or greater
+  * a webcam ;)
+
+= How to use with Mac OS X=
+
+  * double click to Portrait.app
+  * copy/paste the 1st url to login to facebook
+  * copy/paste the 2nd url to grant photo upload access
+  * copy/paste the 3rd url to grant status update access
+  * touch the screen to take a photo
+  * update your status
+  * post-it
+  * it's done!
+
+Portrait store your sessionKey, you need to click "Save my login info" box on the Facebook login page.
+
+= How to launch with Windows OS =
+ 
+  * unzip Portrait.xxx.zip
+  * go to Portrait.app\Contents\Resources\Java directory
+  * double clic to portrait.jar (or launch java -jar portrait.jar)
+  * copy/paste the 1st url to login to facebook
+  * copy/paste the 2nd url to grant photo upload access
+  * copy/paste the 3rd url to grant status update access
+  * touch the screen to take a photo
+  * update your status
+  * post-it
+  * it's done!
+
+= How to use throw a proxy =
+  
+  * unzip Portrait.xxx.zip
+  * launch %JDK5%\bin\java -Dhttp.proxyHost=www.proxy.com -Dhttp.proxyPort=1234 -jar Portrait.app\Contents\Resources\Java\portrait.jar
+  * enjoy!
